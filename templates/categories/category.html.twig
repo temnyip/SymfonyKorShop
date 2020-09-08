@@ -6,20 +6,17 @@
     {% endblock %}
         <table class="table table-condensed table-bordered table-hover" style="width: auto">
             <tr>
-                <th>ID: посмотреть товар</th>
-                <th>Категория</th>
+                <th>Категория (посмотреть товар в БД)</th>
                 <th>URL магазина</th>
-                <th>Статус продукта в БД</th>
+                <th>Статус в БД</th>
 
             </tr>
             {% for category in categories %}
                 <tr>
-                    <td><a href="{{ path('show_id',{'id':category.id} ) }}">{{ category.id }}</a></td>
-                    <td>{{ category.title }}</td>
+                    <td><a href="{{ path('show_id',{'id':category.id} ) }}">{{ category.title }}</a></td>
                     <td><a href="{{ category.uri }}">{{ category.uri }}</a></td>
                     <td>{{ category.status }}</td>
                 </tr>
             {% endfor %}
         </table>
-        {# {{ text }} #}
 {% endblock %}
