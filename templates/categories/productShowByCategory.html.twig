@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+
+    <div>
+        <table class="table table-condensed table-bordered table-hover" style="width: auto">
+        <tr>
+            <th>Product</th>
+            <th>Price</th>
+            <th>Description</th>
+            <th>Date</th>
+            <th>Images</th>
+            <th>url</th>
+        </tr>
+        {% for product in products %}
+            <tr>
+                <td><a href="{{ product.url }}">{{ product.title|raw }}</a></td>
+                <td>{{ product.price|raw }}</td>
+                <td>{{ product.description|raw }}</td>
+                <td>{{ product.ends_date }}</td>
+                <td><img src="{{ product.images }}" alt=""></td>
+                <td>{{ product.url }}</td>
+            </tr>
+        {% endfor %}
+        </table>
+    </div>
+{% endblock %}

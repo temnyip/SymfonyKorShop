@@ -1,0 +1,12 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+    <a href="{{ path('home') }}">назад</a><br>
+    {% block stylesheets %}
+        {{ encore_entry_link_tags('app') }}
+    {% endblock %}
+    <div>
+        {{ text }}
+    </div>
+
+
+{% endblock %}

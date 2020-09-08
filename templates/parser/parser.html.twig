@@ -1,0 +1,33 @@
+{% extends 'parser/base.html.twig' %}
+{% block body %}
+    {% block stylesheets %}
+        {{ encore_entry_link_tags('app') }}
+    {% endblock %}
+    {# <h1>{{ title }}</h1> #}
+    <div>
+        <form action="{{ path('parse_product') }}" class="form-inline korshop-form" method="POST">
+            <div class="form-group">
+                <label for="">Категории:</label>
+                <select name="category_id" id="select" class="form-control">
+                    {% for category in categories %}
+                        <option value="{{ category.id }}">{{ category.title }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+{#            <input type="number" name="category_max" style="width: 60px">#}
+            <input type="submit" value="Спарсить">
+        </form>
+        <form action="{{ path('parse_product_all') }}" class="form-inline korshop-form" method="POST">
+            <input type="submit" value="Получить все категории">
+        </form>
+    </div>
+    <div>
+        <form action="{{ path('parse_empty') }}" class="form-inline korshop-form" method="POST">
+            <input type="submit" value="Допарсить пустые категории">
+        </form>
+    </div>
+    <div>
+        <a href="{{ path('product_show') }}">Список товаров</a><br>
+        <a href="{{ path('category_show') }}">Список категорий</a>
+    </div>
+{% endblock %}

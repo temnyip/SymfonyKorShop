@@ -1,0 +1,29 @@
+{% extends 'base.html.twig' %}
+        {% block stylesheets %}
+            {{ encore_entry_link_tags('app') }}
+        {% endblock %}
+
+{% block body %}
+    <a href="{{ path('home') }}">назад</a>
+    <h2>Список продуктов:</h2>
+    <table class="table table-condensed table-bordered table-hover" style="width: auto">
+        <tr>
+            <th>Товар</th>
+            <th>Цена</th>
+            <th>О товаре</th>
+            <th>Срок годности</th>
+            <th>картинка</th>
+            <th>URL тов.</th>
+        </tr>
+        {% for product in products %}
+            <tr>
+                <td><a href="{{ product.url }}">{{ product.title|raw }}</a></td>
+                <td>{{ product.price|raw }}</td>
+                <td>{{ product.description|raw }}</td>
+                <td>{{ product.endsDate }}</td>
+                <td><img src="{{ product.images|raw }}" alt=""></td>
+                <td>{{ product.url }}</td>
+            </tr>
+        {% endfor %}
+    </table>
+{% endblock %}
